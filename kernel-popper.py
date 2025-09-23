@@ -74,15 +74,20 @@ def get_cubic_weights(model: KernelRidge, training_data: np.array,
             and the calculated feature weights (for testing)
         """
     # enumerate polynomial features
-    # store some square roots so we don't have to keep recalculating
+    # store some square roots, so we don't have to keep recalculating
     gamma = model.gamma
     coef0 = model.coef0
     # calculate quadratic expansion of training_data
     columns = [[sqrt(coef0**3)] * training_data.shape[0]]
     polynomial_feature_names = ['sqrt(coef0**3)']
     n_features = training_data.shape[1]
+    assert model.kernel == 'poly' and model.degree == 3, "Model does not have a polynomial kernel with degree 3"
     if feature_names is None:
         feature_names = [f'f{i}' for i in range(n_features)]
+    else:
+        assert len(feature_names) == training_data.shape[1], f'Length of feature name list ({len(feature_names)})' \
+                                                      f' does not match columns in training' \
+                                                      f' data ({training_data.shape[1]})'
     for i in tqdm(range(n_features)):
         columns.append(training_data[:, i] ** 3 * sqrt(gamma**3))
         polynomial_feature_names.append(f'{feature_names[i]}**3 * sqrt(gamma**3)')
@@ -134,7 +139,6 @@ def test_quadratic_model() -> None:
     weight_values, new_predictions = get_quadratic_weights(model, x)
     # compare with original predictions from the model, tolerating a small difference from calculations
     assert np.max(np.abs(original_predictions - new_predictions)) < 1e-9
-    print(weight_values)
 
 
 def test_cubic_model() -> None:
@@ -160,9 +164,9 @@ def test_cubic_model() -> None:
 
 
 def run_tests():
+
     test_quadratic_model()
     test_cubic_model()
-
 
 if __name__ == "__main__":
     run_tests()
