@@ -5,8 +5,7 @@ from sklearn.kernel_ridge import KernelRidge
 from typing import Optional, List
 
 
-def get_quadratic_weights(model: KernelRidge, training_data: np.array,
-                          feature_names: Optional[List[str]] = None) -> (dict, np.array):
+def get_quadratic_weights(model: KernelRidge, feature_names: Optional[List[str]] = None) -> (dict, np.array):
     """
         Takes a scikit-learn KernelRidge regression model (fit with a polynomial kernel with degree 2)
         and computes primary (feature)
@@ -24,6 +23,7 @@ def get_quadratic_weights(model: KernelRidge, training_data: np.array,
             and the calculated feature weights (for testing)
         """
     # check input
+    training_data = model.X_fit_
     if feature_names is not None:
         assert len(feature_names) == training_data.shape[1], f'Length of feature name list ({len(feature_names)})' \
                                                              f' does not match columns in training' \
@@ -55,8 +55,7 @@ def get_quadratic_weights(model: KernelRidge, training_data: np.array,
     return weight_values, new_predictions
 
 
-def get_cubic_weights(model: KernelRidge, training_data: np.array,
-                      feature_names: Optional[List[str]] = None) -> (dict, np.array):
+def get_cubic_weights(model: KernelRidge, feature_names: Optional[List[str]] = None) -> (dict, np.array):
     """
         Takes a scikit-learn KernelRidge regression model (fit with a polynomial kernel with degree 3)
         and computes primary (feature)
@@ -77,6 +76,7 @@ def get_cubic_weights(model: KernelRidge, training_data: np.array,
     # store some square roots, so we don't have to keep recalculating
     gamma = model.gamma
     coef0 = model.coef0
+    training_data = model.X_fit_
     # calculate quadratic expansion of training_data
     columns = [[sqrt(coef0**3)] * training_data.shape[0]]
     polynomial_feature_names = ['sqrt(coef0**3)']
@@ -136,7 +136,7 @@ def test_quadratic_model() -> None:
     model.fit(x, y)
     original_predictions = model.predict(x)
     # compute the primary weight vector
-    weight_values, new_predictions = get_quadratic_weights(model, x)
+    weight_values, new_predictions = get_quadratic_weights(model)
     # compare with original predictions from the model, tolerating a small difference from calculations
     assert np.max(np.abs(original_predictions - new_predictions)) < 1e-9
 
@@ -158,7 +158,7 @@ def test_cubic_model() -> None:
     model.fit(x, y)
     original_predictions = model.predict(x)
     # compute the primary weight vector
-    _, new_predictions = get_cubic_weights(model, x)
+    _, new_predictions = get_cubic_weights(model)
     # compare with original predictions from the model, tolerating a small difference from calculations
     assert np.max(np.abs(original_predictions - new_predictions)) < 1e-9
 
