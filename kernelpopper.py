@@ -119,7 +119,7 @@ def get_cubic_weights(model: KernelRidge, feature_names: Optional[List[str]] = N
     polynomial_x = np.transpose(columns)
     # . product with dual weights
     poly_weights = np.matmul(model.dual_coef_, polynomial_x)
-    weight_values = {polynomial_feature_names[i]: poly_weights[i] for i in range(n_features)}
+    weight_values = {polynomial_feature_names[i]: poly_weights[i] for i in range(len(polynomial_feature_names))}
     new_predictions = np.matmul(polynomial_x, poly_weights)
     return weight_values, new_predictions, polynomial_x
 
