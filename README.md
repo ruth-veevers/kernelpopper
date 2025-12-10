@@ -1,8 +1,8 @@
 <img width="240" height="211" alt="kernel-popper logo" src="https://github.com/user-attachments/assets/ba44d0f2-e6a2-4e64-9f38-3d45ed58a01d"/> 
 
-# KERNEL-POPPER
+# KERNELPOPPER
 
-Kernel-popper is a package designed to be compatible with scikit-learn's KernelRidge regression models; it calculates primary (feature) weights from the dual (sample) weights learnt by the model. This allows analysis and interpretation of the relationships that the model is using to make predictions. 
+KernelPopper is a package designed to be compatible with scikit-learn's KernelRidge regression models; it calculates primary (feature) weights from the dual (sample) weights learnt by the model. This allows analysis and interpretation of the relationships that the model is using to make predictions. 
 
 A paper describing the calculation is in progress. We will update a link here on publication.
 
