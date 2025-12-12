@@ -18,7 +18,7 @@ process one_quadratic {
 
 workflow {
 	main:
-		feature_channel=Channel.of(101..149)
+		feature_channel=Channel.of(5..149)
 		seed_channel=Channel.of(0..9)
 		one_quadratic(feature_channel.combine(seed_channel))
 }
