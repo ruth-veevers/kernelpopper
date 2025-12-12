@@ -19,7 +19,7 @@ process one_cubic {
 
 workflow {
 	main:
-		feature_channel=Channel.of(0..149)
+		feature_channel=Channel.of(5..149)
 		seed_channel=Channel.of(0..9)
 		one_cubic(feature_channel.combine(seed_channel))
 }
