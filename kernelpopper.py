@@ -200,7 +200,3 @@ def run_tests():
     test_quadratic_kernel()
     test_quadratic_model()
     test_cubic_model()
-
-
-if __name__ == "__main__":
-    run_tests()
