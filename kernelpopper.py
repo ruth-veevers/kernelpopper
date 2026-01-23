@@ -13,8 +13,6 @@ def get_quadratic_weights(model: KernelRidge, feature_names: Optional[List[str]]
         weights from the dual (sample) weights.
 
         :param model: a trained KernelRidge regression model with a polynomial kernel (degree 2)
-        :param training_data: an array containing the data on which the model was trained (the x argument
-            passed to model.fit())
         :param feature_names: Optional parameter - if blank, the original features (columns in training_data) will be
             referred to as 'f0', 'f1', 'f2', etc... Otherwise, will use apply names from this list to the columns in order
         :return: (weight_values, new_predictions), where:
@@ -66,8 +64,6 @@ def get_cubic_weights(model: KernelRidge, feature_names: Optional[List[str]] = N
         weights from the dual (sample) weights.
 
         :param model: a trained KernelRidge regression model with a polynomial kernel (degree 3)
-        :param training_data: an array containing the data on which the model was trained (the x argument
-            passed to model.fit())
         :param feature_names: Optional parameter - if blank, the original features (columns in training_data) will be
             referred to as 'f0', 'f1', 'f2', etc... Otherwise, will use apply names from this list to the columns in order
         :return: (weight_values, new_predictions), where:
