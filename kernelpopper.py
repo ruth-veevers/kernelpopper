@@ -128,6 +128,7 @@ def get_quadratic_test_data() -> (np.array, np.array):
     :return:
     """
     # synthetic data
+    np.random.seed(0)
     x = np.random.rand(10000, 10)
     # generate data w/ non-linear relationship between x and y
     y = x[:, 0] + (2 * x[:, 1] ** 2) + 5 * x[:, 4] * x[:, 6]
