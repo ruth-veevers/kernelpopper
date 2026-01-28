@@ -46,7 +46,7 @@ model.fit(X, y)
 
 ### Popping a quadratic kernel
 
-Use the ```get_quadratic_weights``` function. This takes the trained model as a mandatory argument. An optional argument, ```feature_names```, is a list of strings to use as the names of the features in the original training data. If not provided, the features will be named 'f0', 'f1', 'f2', etc. The function returns three objects: a dictionary where the keys describe the expanded polynomial features and the values are the corresponding calculated weights; the predictions as calculated from the expanded polynomial features to compare with the model's original predictions (for testing); the training data mapped into its feature space representation. 
+Use the ```get_quadratic_weights``` function. This takes the trained model as a mandatory argument. An optional argument, ```feature_names```, is a list of strings to use as the names of the features in the original training data. If not provided, the features will be named 'f0', 'f1', 'f2', etc. The function returns three objects: a dictionary where the keys describe the expanded polynomial features and the values are the corresponding calculated weights; the predictions as calculated from the expanded polynomial features to compare with the model's original predictions (for testing); the training data mapped into its feature space representation. The feature names will include references to the model's coef0 and gamma hyperparameters, and uses ```sqrt()``` to indicate the square root.
 
 Example:
 
