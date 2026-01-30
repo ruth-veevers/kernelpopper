@@ -18,7 +18,7 @@ The following dependencies are required to use the package:
 
 ```
   - numpy=2.3.3
-  - python=3.13.7
+  - python=3.12
   - scikit-learn=1.7.2
   - tqdm=4.67.1
 ```
