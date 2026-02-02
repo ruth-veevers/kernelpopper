@@ -51,7 +51,7 @@ Use the ```get_quadratic_weights``` function. This takes the trained model as a 
 Example:
 
 ```
-weight_values, new_predictions, _ = get_quadratic_weights(model)
+weight_values, new_predictions, _ = kernelpopper.get_quadratic_weights(model)
 ```
 
 ### Popping a cubic kernel
@@ -63,7 +63,7 @@ Use the ```get_cubic_weights``` function. This operates the same as the ```get_q
 There are three test functions provided to confirm that KernelPopper is running as expected. All three can be run in series:
 
 ```
-run_tests()
+kernelpopper.run_tests()
 ```
 
 or separately:
