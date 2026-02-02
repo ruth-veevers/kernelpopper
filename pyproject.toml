@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "kernelpopper"
+version = "0.1.5"
+description = "A scikit-learn-compatible package for exploring the coefficients of implicitly defined features learned by Kernel Ridge Regression models."
+authors = ["Ruth Veevers", "Richard Morris"]
+readme = "README.md"
+license="GNU General Public License v2.0"
+
+[tool.poetry.dependencies]
+numpy = "^2.3.3"
+python = "^3.12"
+scikit-learn = "^1.7.2"
+tqdm = "^4.67.1"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
