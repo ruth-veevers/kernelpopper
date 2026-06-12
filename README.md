@@ -10,7 +10,19 @@ A manuscript describing how KernelPopper works is in preparation and will be lin
 
 ## Install
 
-The package will shortly be available via `pip`. We will update this section with instructions.
+The package is now available via `pip`:
+
+```
+python3 -m pip install kernelpopper 
+```
+
+To install from source:
+
+```
+ git clone git@github.com:ruth-veevers/kernelpopper.git
+ cd kernelpopper
+ pip install .
+```
 
 ### Requirements
 
@@ -35,7 +47,7 @@ from sklearn.kernel_ridge import KernelRidge
 from sklearn.datasets import make_friedman1
 
 # Make a dataset
-X, y = makefriedman1(random_state = 0)
+X, y = make_friedman1(random_state = 0)
 # Either build a quadratic model
 model = KernelRidge(kernel = 'poly', degree = 2)
 # Or, build a cubic model
