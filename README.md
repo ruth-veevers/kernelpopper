@@ -72,13 +72,7 @@ Use the ```get_cubic_weights``` function. This operates the same as the ```get_q
 
 ### Running tests
 
-There are three test functions provided to confirm that KernelPopper is running as expected. All three can be run in series:
-
-```
-kernelpopper.run_tests()
-```
-
-or separately:
+There are three test functions provided in ```tests/tests.py``` to confirm that KernelPopper is running as expected. All three can be run in series:
 
 - The ```test_quadratic_kernel``` function creates a synthetic dataset and uses it to train a KRR model with a quadratic kernel. The ```get_quadratic_weights``` function is called to obtain KernelPopper's calcuation of the feature space representation of each sample, from which a matrix of inner products is calculated. This is checked against the output of the kernel function to confirm that ```get_quadratic_weights``` is finding the correct feature space representation.
 - The ```test_quadratic_kernel``` function creates a synthetic dataset and uses it to train a KRR model with a quadratic kernel. The ```get_quadratic_weights``` function is called, which returns new predictions for each sample in the synthetic dataset calculated using the expanded polynomial weights. The test function then confirms that these are the same as the original predictions.
